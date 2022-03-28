@@ -616,6 +616,9 @@ static void ch34x_close( struct usb_serial_port *port,
 	struct ch34x_private *priv = usb_get_serial_port_data(port);
 	unsigned long flags;
 	unsigned int c_cflag;
+	int bps;
+	long timeout;
+	//wait_queue_t wait;
 
 #if(LINUX_VERSION_CODE < KERNEL_VERSION(3, 11, 0))
 	dbg_ch34x("%s - port:%d", __func__, port->number);
